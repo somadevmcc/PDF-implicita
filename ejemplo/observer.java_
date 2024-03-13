@@ -1,0 +1,43 @@
+package src;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.Scanner;
+
+class observer {
+    public static final String MY_PROPERTY = "myProperty";
+
+    private String myProperty;
+    private PropertyChangeSupport propertyChangeSupport;
+
+    public observer() {
+        propertyChangeSupport = new PropertyChangeSupport(this);
+    }
+
+    public String getMyProperty() {
+        return myProperty;
+    }
+
+    public void setMyProperty(String newMyProperty) {
+        String oldMyProperty = this.myProperty;
+        this.myProperty = newMyProperty;
+        propertyChangeSupport.firePropertyChange(MY_PROPERTY, oldMyProperty, newMyProperty);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.removePropertyChangeListener(listener);
+    }
+}
+
+class MyPropertyChangeListener implements PropertyChangeListener {
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("Property changed: " + evt.getPropertyName());
+        System.out.println("Old value: " + evt.getOldValue());
+        System.out.println("New value: " + evt.getNewValue());
+    }
+}

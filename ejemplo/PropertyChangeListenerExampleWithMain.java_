@@ -1,0 +1,32 @@
+package src;
+import java.beans.PropertyChangeListener;
+import java.util.Scanner;
+public class PropertyChangeListenerExampleWithMain {
+    public static void main(String[] args) {
+        observer myObject = new observer();
+
+        // Create a listener
+        PropertyChangeListener listener = new MyPropertyChangeListener();
+
+        // Add the listener to the object
+        myObject.addPropertyChangeListener(listener);
+
+        // Interactive setting of property value
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a value for myProperty: ");
+        String inputValue = scanner.nextLine();
+
+        // Set the property value
+        myObject.setMyProperty(inputValue);
+
+
+        // Set the property value again to demonstrate no notification after removal
+        System.out.print("Enter another value for myProperty: ");
+        inputValue = scanner.nextLine();
+        myObject.setMyProperty(inputValue);
+        
+        // Remove the listener
+        myObject.removePropertyChangeListener(listener);
+        scanner.close();
+    }
+}
