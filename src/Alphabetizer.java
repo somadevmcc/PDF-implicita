@@ -13,6 +13,6 @@ class Alphabetizer implements PropertyChangeListener {
         while (index < lines.getLineas().size() && lines.getLineas().get(index).compareToIgnoreCase(frase) < 0) {
             index++;
         }
-        lines.insert(index, frase);
+        lines.insert(index, frase,lines.getHashPalabras());
     }
 }

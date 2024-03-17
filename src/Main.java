@@ -19,33 +19,25 @@ public class Main {
 
 
         Lineas lineas = new Lineas();
-        Lineas shifts = new Lineas();
+        Lineas index = new Lineas();
 
         Input input = new Input();
 
-        File file = new File("harry-potter-1.pdf");
-        File file2 = new File("8 YummySAD IBM.pdf");
-       try {
-        String text = input.getText(file2);
-       } catch (Exception e) {
-        // TODO: handle exception
-       }
-        
-       // CircularShift circularShift = new CircularShift(shifts);
-       /*
+        File file = new File("harry-potter-5.pdf");
+        PageCheck pdf = new PageCheck(index,file);
         Alphabetizer alphabetizer = new Alphabetizer();
         Output output = new Output();
-
-        //lineas.agregarEscuchador(circularShift);
-        shifts.agregarEscuchador(alphabetizer);
-
+        lineas.agregarEscuchador(pdf);
+        index.agregarEscuchador(alphabetizer);
+        
         try {
-            input.readFile(lineas, new File(path));
-            output.writeFile(shifts, new File(path2));
+            input.readFile(lineas, new File("input.txt"));
+            output.writeFile(index, new File("output.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
+        
+     
     }
 
 
