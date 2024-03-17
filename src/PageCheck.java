@@ -30,14 +30,6 @@ public class PageCheck implements PropertyChangeListener {
         this.file = file;
     }
 
-
-    
-    public String removeSpecialSymbols(String input) {
-        String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
-        String result = normalized.replaceAll("[^\\p{L}\\p{M}0-9\\s]", "");
-        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-        return pattern.matcher(result).replaceAll("");
-        }
      public void propertyChange(PropertyChangeEvent evento){
         String text = "";
         String palabra = "";
@@ -133,4 +125,10 @@ public class PageCheck implements PropertyChangeListener {
         fraseNueva.deleteCharAt(fraseNueva.length() - 1);
         return fraseNueva.toString();
     }
+    public String removeSpecialSymbols(String input) {
+        String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
+        String result = normalized.replaceAll("[^\\p{L}\\p{M}0-9\\s]", "");
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(result).replaceAll("");
+        }
 }

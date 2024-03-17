@@ -1,6 +1,0 @@
-carro
-Casita
-Comida
-mochila
-PERRO
-zapato
