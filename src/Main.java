@@ -10,7 +10,7 @@ public class Main {
         Input input = new Input();
 
         File file = new File("harry-potter-5.pdf");
-        PageCheck pdf = new PageCheck(index,file);
+        PaginasPDF pdf = new PaginasPDF(index,file);
         Alphabetizer alphabetizer = new Alphabetizer();
         Output output = new Output();
         lineas.agregarEscuchador(pdf);

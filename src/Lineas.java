@@ -36,17 +36,18 @@ class Lineas {
         
     }
 
-    public void insert(int index,String frase,HashMap<String, List<Integer>> hashPalabras) {
+    public void insert(int index,String frase) {
+        
         List<String> lineaAnterior = new ArrayList<>(lineas);
         String listaPaginas = "";
-        for (int i = 0; i < hashPalabras.get(frase).size(); i++) {
-            listaPaginas += hashPalabras.get(frase).get(i) + ", ";
+        for (int i = 0; i < this.hashPalabras.get(frase).size(); i++) {
+            listaPaginas += this.hashPalabras.get(frase).get(i) + ", ";
         }
         try {
             listaPaginas = listaPaginas.substring(0, listaPaginas.length() - 2); // remover la ultima coma
-            // TODO: handle exception
+            
         }catch (Exception e){
-            return;
+            return; // Si la palabra no se encuentra en el documento entonces no se agrega al output
         }
         
 
@@ -54,9 +55,7 @@ class Lineas {
         String lineaNueva = ""+frase+" ["+listaPaginas+"]";
         lineas.add(index, lineaNueva);
     }
-    public void insert(int index,String lineaNueva){
-        lineas.add(index,lineaNueva);
-    }
+    
     public String getUltimoInsert(){
         return lineas.remove(lineas.size() - 1);
     }

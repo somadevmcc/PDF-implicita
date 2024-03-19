@@ -15,12 +15,12 @@ import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
-public class PageCheck implements PropertyChangeListener {
+public class PaginasPDF implements PropertyChangeListener {
 
     private Lineas index;
     private File file;
     PDDocument document;
-    PageCheck(Lineas index,File file) {
+    PaginasPDF(Lineas index,File file) {
         try {
             document = Loader.loadPDF(file);
         } catch (IOException e) {
@@ -70,6 +70,7 @@ public class PageCheck implements PropertyChangeListener {
                     if(flagANd){
                         paginasIndex.add(pageNumber);
                     }
+                    
                     flagANd = true;
                     concatenatedText.setLength(0);
                 }
@@ -116,15 +117,7 @@ public class PageCheck implements PropertyChangeListener {
         }
         return true; // All pairs follow the "word AND word" format
     }
-    private String arrayToString(List<String> fraseList) {
-        StringBuilder fraseNueva = new StringBuilder();
-        for (String node : fraseList) {
-            fraseNueva.append(node);
-            fraseNueva.append(" ");
-        }
-        fraseNueva.deleteCharAt(fraseNueva.length() - 1);
-        return fraseNueva.toString();
-    }
+
     public String removeSpecialSymbols(String input) {
         String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
         String result = normalized.replaceAll("[^\\p{L}\\p{M}0-9\\s]", "");
